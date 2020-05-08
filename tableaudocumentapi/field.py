@@ -195,11 +195,11 @@ class Field(object):
 
     @staticmethod
     def _read_description(xmldata):
-        description = xmldata.find('.//desc')
+        description = xmldata.find('.//run')
         if description is None:
             return None
 
-        description_string = ET.tostring(description, encoding='utf-8')
+        description_string = ET.tostring(description, encoding='utf-8', method='text')
         # Format expects a unicode string so in Python 2 we have to do the explicit conversion
         if isinstance(description_string, bytes):
             description_string = description_string.decode('utf-8')
